@@ -37,7 +37,8 @@ int main() {
 
     cin >> t;
 
-    while (t--) {
+    for (int c = 1; c <= t; ++c) {
+        cout << "Case " << c << ":\n";
         cin >> n;
         sz = (n * 2) - 1;
 
