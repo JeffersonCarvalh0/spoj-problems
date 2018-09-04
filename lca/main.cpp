@@ -15,7 +15,7 @@ public:
 
     SparseTable(vector<int> &a): a(a) {
         int n = a.size();
-        st = vector<vector<int>>(n, vector<int>(logs[n]));
+        st = vector<vector<int>>(n, vector<int>(logs[n] + 1));
         for (int i = 0; i < n; ++i) st[i][0] = i;
         for (int j = 1; j <= logs[n]; ++j) {
             for (int i = 0; i + (1 << j) <= n; ++i) {
@@ -72,7 +72,7 @@ int main() {
 
     cin >> t;
     for (int c = 1; c <= t; ++c) {
-        cout << "Case: " << c << ":\n";
+        cout << "Case " << c << ":\n";
 
         cin >> n;
         vector<list<int>> adj_list(n);
@@ -86,10 +86,7 @@ int main() {
         SparseTable st(lca.heights);
 
         cin >> q;
-        while (q--) {
-            cin >> v >> w; --v; --w;
-            cout << lca.query(v, w, st) + 1 << '\n';
-        }
+        while (q--) cin >> v >> w, cout << lca.query(--v, --w, st) + 1 << '\n';
     }
 
     return 0;
